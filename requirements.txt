@@ -1,0 +1,14 @@
+Django>=5.0,<6.0
+django-unfold
+django-import-export
+django-htmx
+django-widget-tweaks
+django-lifecycle
+django-environ
+django-extensions
+django-debug-toolbar
+django-tailwind
+psycopg[binary]
+dj-database-url
+gunicorn
+whitenoise

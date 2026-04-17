@@ -1,0 +1,32 @@
+{% if erro %}
+<div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg">
+    <div class="flex">
+        <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+            </svg>
+        </div>
+        <div class="ml-3">
+            <p class="text-sm text-red-700 font-medium">{{ erro }}</p>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="bg-indigo-50 rounded-2xl p-6 transition-all duration-300 transform scale-100 hover:scale-[1.02] shadow-sm">
+    <div class="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-2">Custo Estimado por Porção</div>
+    <div class="flex items-baseline justify-center">
+        <span class="text-2xl font-bold text-gray-900 mr-2">R$</span>
+        <span class="text-5xl font-black {% if alerta_vermelho %}text-red-600 animate-pulse{% else %}text-indigo-900{% endif %}">
+            {{ custo_por_marmita|stringformat:".2f" }}
+        </span>
+    </div>
+    {% if alerta_vermelho %}
+    <div class="mt-4 flex items-center justify-center text-red-600 animate-bounce">
+        <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <span class="text-sm font-bold">Custo acima do limite permitido!</span>
+    </div>
+    {% endif %}
+</div>
+{% endif %}
