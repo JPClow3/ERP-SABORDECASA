@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'tailwind',
     
     # Local apps
+    'estoque',
     'producao',
 ]
 

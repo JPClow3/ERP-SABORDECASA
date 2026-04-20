@@ -1,6 +1,6 @@
 from decimal import Decimal, InvalidOperation
 
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .models import Insumo, ProducaoDiaria
 
@@ -10,6 +10,10 @@ def _calcular_custo(insumo, peso_bruto, marmitas):
     return custo_total / Decimal(marmitas)
 
 def lancamento_view(request):
+    return redirect("estoque:painel")
+
+
+def lancamento_legado_view(request):
     insumos = Insumo.objects.all()
 
     if request.method == "POST":

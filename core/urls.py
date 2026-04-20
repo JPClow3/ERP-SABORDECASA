@@ -20,6 +20,7 @@ from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('estoque/', include('estoque.urls')),
     path('producao/', include('producao.urls')),
-    path('', lambda request: redirect('lancamento')), # Redirect root to launch page for now
+    path('', lambda request: redirect('estoque:painel')),
 ]

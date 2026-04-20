@@ -1,0 +1,27 @@
+{% if erro %}
+<div class="rounded-lg border border-red-200 bg-red-50 p-4 text-sm font-semibold text-red-800">{{ erro }}</div>
+{% elif mensagem %}
+<div class="rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">{{ mensagem }}</div>
+{% else %}
+<div class="rounded-lg border border-indigo-100 bg-indigo-50 p-4">
+    <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+            <div class="text-xs font-bold uppercase tracking-wide text-indigo-700">Prévia de produção</div>
+            <div class="mt-1 text-sm font-semibold text-gray-800">{{ produto.nome }}</div>
+        </div>
+        <div class="text-sm font-black text-gray-950">
+            R$ {{ custo_total|floatformat:2 }} total · R$ {{ custo_unitario|floatformat:2 }} un.
+        </div>
+    </div>
+    <div class="mt-4 grid gap-2">
+        {% for item in itens_preview %}
+        <div class="flex items-center justify-between rounded-md bg-white px-3 py-2 text-sm">
+            <span class="font-semibold text-gray-800">{{ item.nome }}</span>
+            <span class="{% if item.insuficiente %}font-black text-red-600{% else %}font-bold text-gray-700{% endif %}">
+                usa {{ item.quantidade|floatformat:3 }} · saldo {{ item.saldo|floatformat:3 }}
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
